@@ -1,8 +1,17 @@
-const postsReducer = (oldPosts = [], action) => {
-  if (action === "FETCH_POSTS") {
-    return action.payload;
+const postsReducer = (state = [], action) => {
+  
+    //used when a reducer expects multiple actions
+  switch (action.type) {
+    case "FETCH_POSTS":
+      return action.payload;
+    default:
+      return state;
   }
-  return oldPosts;
 };
+//used when there can be only one action passed
+//   if (action === "FETCH_POSTS") {
+//     return action.payload;
+//   }
+//   return state;
 
 export default postsReducer;
